@@ -6,6 +6,10 @@ from selenium.webdriver.common.alert import Alert
 import datetime
 import schedule
 
+number = input('学籍番号を入力してください')
+pas= input('パスワードを入力してください')
+file = input('ファイルのディレクトリを指定してください')
+
 def job():
     # ブラウザを開く
     DRIVER_PATH = '/Users/kanhyon/chromedriver'
@@ -14,10 +18,10 @@ def job():
     driver.get("https://study.ns.kogakuin.ac.jp/lms/lginLgir/;SID=s174d65cb830698d6fa75a44d231#")
     # ログインIDを入力
     login_id = driver.find_element_by_xpath('//*[@id="loginForm"]/div[1]/div[1]/div[1]/div[2]/input')
-    login_id.send_keys("c418113")
+    login_id.send_keys(number)
     # パスワードを入力
     password = driver.find_element_by_xpath('//*[@id="loginForm"]/div[1]/div[1]/div[2]/div[2]/input')
-    password.send_keys("パスワード")
+    password.send_keys(pas)
     # ログインボタンをクリックする
     login_btn = driver.find_element_by_xpath('//*[@id="loginForm"]/div[2]/button')
     login_btn.click()
@@ -31,7 +35,7 @@ def job():
     submit_open_btn= driver.find_element_by_xpath('//*[@id="REP0000000263821"]/a')
     submit_open_btn.click()
     #ファイルを添付する
-    driver.find_element_by_xpath('//*[@id="makeFile0"]/input').send_keys('/Users/kanhyon/ex.docx')
+    driver.find_element_by_xpath('//*[@id="makeFile0"]/input').send_keys(file)
     #提出する
     submit_btn= driver.find_element_by_xpath('//*[@id="cs_fullHeadTitle"]/div[1]/div/a')
     submit_btn.click()
